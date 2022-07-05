@@ -1,5 +1,5 @@
 ## Структура БД
-![Screenshot][Diagramm.JPG]
+![Screenshot](Diagramm.JPG)
 
 ## Запросы к БД
 
