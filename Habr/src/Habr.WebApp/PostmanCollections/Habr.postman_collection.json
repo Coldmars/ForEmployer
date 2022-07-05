@@ -1,0 +1,332 @@
+{
+	"info": {
+		"_postman_id": "e175a0cc-6da7-4589-a123-dbae36323345",
+		"name": "Habr",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RegistrNewUser",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Ivan\",\r\n  \"email\": \"Ivan@gmail.com\",\r\n  \"passwordHash\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7255/api/users",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7255",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateNewPost",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "Ivan@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"TestTitle\",\r\n  \"text\": \"TestText\",\r\n  \"userId\": 7\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7255/api/posts",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7255",
+					"path": [
+						"api",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllPosts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "Ivan@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7255/api/posts",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7255",
+					"path": [
+						"api",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MovePostToDraft",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "Ivan@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7255/api/posts/drafts/15",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7255",
+					"path": [
+						"api",
+						"posts",
+						"drafts",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EditDraft",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "Ivan@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"TestTitleChanged\",\r\n  \"text\": \"TestTextChanged\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7255/api/posts/drafts/4",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7255",
+					"path": [
+						"api",
+						"posts",
+						"drafts",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDraftsByUser",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "Ivan@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7255/api/posts/drafts",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7255",
+					"path": [
+						"api",
+						"posts",
+						"drafts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PublishPostFromDrafts",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "Ivan@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7255/api/posts/4",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7255",
+					"path": [
+						"api",
+						"posts",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeletePost",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "Ivan@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7255/api/posts/16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7255",
+					"path": [
+						"api",
+						"posts",
+						"16"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
