@@ -34,10 +34,10 @@ SET @MinMovieDurationMinutes = 120
 
 SELECT
       Actor.[Name], 
-	  Actor.BirthDate, 
-	  DATEDIFF(YEAR, Actor.BirthDate, GETDATE()) AS [Years Old], 
-	  COUNT(Actor.[Name]) AS [Directors Count], 
-	  Astrology.[Sign] AS Zodiac
+      Actor.BirthDate, 
+      DATEDIFF(YEAR, Actor.BirthDate, GETDATE()) AS [Years Old], 
+      COUNT(Actor.[Name]) AS [Directors Count], 
+      Astrology.[Sign] AS Zodiac
 FROM Movie 
       JOIN MovieActor ON Movie.id = MovieActor.MovieId
       JOIN Actor ON Actor.id = MovieActor.ActorId
@@ -47,8 +47,8 @@ WHERE
       Movie.DurationMinutes > @MinMovieDurationMinutes
 GROUP BY
       Actor.[Name], 
-	  Actor.BirthDate, 
-	  Astrology.[Sign]
+      Actor.BirthDate, 
+      Astrology.[Sign]
 ORDER BY 
       Actor.BirthDate DESC
 
@@ -59,10 +59,10 @@ SET @MinMovieRating = 6.5
 
 SELECT
       Actor.[Name], 
-	  Actor.BirthDate, 
-	  DATEDIFF(YEAR, Actor.BirthDate, GETDATE()) AS [Years Old], 
-	  COUNT(Actor.[Name]) AS [Directors Count], 
-	  Astrology.[Sign] AS Zodiac
+      Actor.BirthDate, 
+      DATEDIFF(YEAR, Actor.BirthDate, GETDATE()) AS [Years Old], 
+      COUNT(Actor.[Name]) AS [Directors Count], 
+      Astrology.[Sign] AS Zodiac
 FROM Movie 
       JOIN MovieActor ON Movie.id = MovieActor.MovieId
       JOIN Actor ON Actor.id = MovieActor.ActorId
@@ -70,15 +70,15 @@ FROM Movie
       JOIN Director ON Movie.DirectorId = Director.id
 WHERE 
       Actor.[Name] NOT IN (SELECT 
-	                            Actor.[Name]
+                                Actor.[Name]
                            FROM Movie
-							    JOIN MovieActor ON Movie.id = MovieActor.MovieId
-							    JOIN Actor ON Actor.id = MovieActor.ActorId
+				JOIN MovieActor ON Movie.id = MovieActor.MovieId
+				JOIN Actor ON Actor.id = MovieActor.ActorId
                            WHERE 
-						        Movie.Rating < @MinMovieRating)
+				Movie.Rating < @MinMovieRating)
 GROUP BY
       Actor.[Name], 
-	  Actor.BirthDate, 
-	  Astrology.[Sign]
+      Actor.BirthDate, 
+      Astrology.[Sign]
 ORDER BY 
       Actor.BirthDate DESC

@@ -8,9 +8,9 @@ AS SELECT
    FROM Movie, 
 	   (SELECT 
 	         COUNT(MovieActor.ActorId) AS c
-        FROM Movie
+            FROM Movie
 	         JOIN MovieActor ON Movie.id = MovieActor.MovieId
-        GROUP BY 
+            GROUP BY 
 		     Movie.Title) res
 GO
 
